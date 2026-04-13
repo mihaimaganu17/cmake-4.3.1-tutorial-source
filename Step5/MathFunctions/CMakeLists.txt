@@ -14,7 +14,7 @@ target_sources(MathFunctions
 #        MathLogger will only be used in the MathFunctions implementation,
 #        not the headers
 target_link_libraries(MathFunctions
-  PUBLIC
+  PRIVATE
     MathLogger
 )
 
@@ -22,6 +22,12 @@ target_link_libraries(MathFunctions
 #        MathFunctions library.  Note that their headers will be
 #        exposed in the MathFunctions.h header, and must be available
 #        to consumers.
+target_link_libraries(MathFunctions
+  PUBLIC
+    OpAdd
+    OpMul
+    OpSub
+)
 
 target_compile_features(MathFunctions PRIVATE cxx_std_20)
 
@@ -33,3 +39,4 @@ endif()
 add_subdirectory(MathLogger)
 
 # TODO9: Add the MathExtensions subdirectory
+add_subdirectory(MathExtensions)
