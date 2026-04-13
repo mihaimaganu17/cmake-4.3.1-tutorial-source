@@ -6,6 +6,10 @@ target_sources(Tutorial
 )
 
 # TODO14: Add VendorLib to Tutorial
+target_link_libraries(Tutorial
+  PRIVATE
+    VendorLib
+)
 
 target_link_libraries(Tutorial
   PRIVATE
