@@ -5,6 +5,11 @@
 
 // TODO3: If the TUTORIAL_USE_SSE2 definition is set, include
 //        the <emmintrin.h> header
+#if defined(TUTORIAL_USE_SSE2)
+#include <emmintrin.h>
+#elif defined(TUTORIAL_USE_ARM_NEON)
+#include <arm_neon.h>
+#endif
 
 namespace {
 
@@ -29,6 +34,13 @@ double sse2_mysqrt(double x)
   Logger.Log(
     std::format("Computed sqrt of {} to be {} with SSE2\n", x, result));
   return result;
+}
+#elif defined(TUTORIAL_USE_ARM_NEON)
+double arm_neon_mysqrt(double x)
+{
+  Logger.Log(
+    std::format("To compute sqrt of {} with ARM NEON\n", x));
+  return x;
 }
 #endif
 
